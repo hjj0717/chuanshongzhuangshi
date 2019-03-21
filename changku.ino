@@ -5,14 +5,14 @@
 */
 
 #include <Servo.h>
-#define ck_zuo 8    //³£±Õ
-#define ck_you 9    //³£±Õ
-#define xianwei_shang 10  //³£¿ª
-#define xianwei_xia 11   //³£¿ª
+#define ck_zuo 8    //å¸¸é—­
+#define ck_you 9    //å¸¸é—­
+#define xianwei_shang 10  //å¸¸å¼€
+#define xianwei_xia 11   //å¸¸å¼€
 #define mada_zhen 4
 #define mada_fu 5
-#define duoji 3  //300¡ã¶æ»ú Âö³åÎª0.5ms-1.5ms
-//¶¨Òå²Ö¿â´æ´¢Î»ÖÃ£¬²Ö¿â·Ö×óÓÒÈı²ã
+#define duoji 3  //300Â°èˆµæœº è„‰å†²ä¸º0.5ms-1.5ms
+//å®šä¹‰ä»“åº“å­˜å‚¨ä½ç½®ï¼Œä»“åº“åˆ†å·¦å³ä¸‰å±‚
 
 int zuo_zongshu = 0;
 int you_zongshu = 0;
@@ -45,12 +45,12 @@ void loop()
 }
 
 
-//²âÊÔ´«¸ĞÆ÷ÓÃ
+//æµ‹è¯•ä¼ æ„Ÿå™¨ç”¨
 void cs()
 {
 }
 
-//´æ´¢¹ı³Ì  Ë³Ğò½«Æä»õÎï´æ´¢ÔÚ×óÓÒ¸÷Èı²ã»õ¼ÜÖĞ
+//å­˜å‚¨è¿‡ç¨‹  é¡ºåºå°†å…¶è´§ç‰©å­˜å‚¨åœ¨å·¦å³å„ä¸‰å±‚è´§æ¶ä¸­
 void cunchu()
 {
 	delay(100);
@@ -148,7 +148,7 @@ void cunchu()
 	}
 }
 
-//¿ª»úÉı½µ¼Ü¶¨Î»
+//å¼€æœºå‡é™æ¶å®šä½
 void qidong_sj()
 {
 	mada_fanzhuan();
@@ -157,7 +157,7 @@ void qidong_sj()
 	delay(500);
 }
 
-//Âí´ïÕı×ªÎªÉÏÉı
+//é©¬è¾¾æ­£è½¬ä¸ºä¸Šå‡
 void mada_zhenzhuan()
 {
 	digitalWrite(mada_zhen, 160);
@@ -165,7 +165,7 @@ void mada_zhenzhuan()
 	Serial.println("motor up");
 }
 
-//Âí´ï·´×ªÎªÏÂ½µ
+//é©¬è¾¾åè½¬ä¸ºä¸‹é™
 void mada_fanzhuan()
 {
 	digitalWrite(mada_zhen, 0);
@@ -173,7 +173,7 @@ void mada_fanzhuan()
 	Serial.println("motor down");
 }
 
-//Âí´ïÍ£Ö¹
+//é©¬è¾¾åœæ­¢
 void mada_tingzhi()
 {
 	digitalWrite(mada_zhen, LOW);
@@ -181,7 +181,7 @@ void mada_tingzhi()
 	Serial.println("moto stop");
 }
 
-//Èë×ó²Ö¶æ»ú¶¯×÷
+//å…¥å·¦ä»“èˆµæœºåŠ¨ä½œ
 void S360_ZUO()
 {
 	Serial.println("servo left");
@@ -190,7 +190,7 @@ void S360_ZUO()
 	S360.write(90);
 }
 
-//ÈëÓÒ²Ö¶æ»ú¶¯×÷
+//å…¥å³ä»“èˆµæœºåŠ¨ä½œ
 void S360_YOU()
 {
 	Serial.println("servo right");
