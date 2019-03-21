@@ -4,9 +4,9 @@
  Author:	Giles.Huang
 */
 
-//A4,A5Á½½ÅÓ²¼şI2CÍ¨Ñ¶  A4,SCL    A5,SCK
+//A4,A5ä¸¤è„šç¡¬ä»¶I2Cé€šè®¯  A4,SCL    A5,SCK
 
-#include <TimerOne.h>   //¶¨Ê±Æ÷1  
+#include <TimerOne.h>   //å®šæ—¶å™¨1  
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>	
 
@@ -26,7 +26,7 @@ int da, xiao = 0;
 #define colorSelect1pin  7
 #define pulsePin  13
 
-Adafruit_PWMServoDriver SERVO_I2C=Adafruit_PWMServoDriver(0x40);  //setPMW 50HZ,²î·Ö1msÎª204.8
+Adafruit_PWMServoDriver SERVO_I2C=Adafruit_PWMServoDriver(0x40);  //setPMW 50HZ,å·®åˆ†1msä¸º204.8
 
 void setup()
 {
@@ -49,13 +49,13 @@ void setup()
 
 	Serial.begin(9600);
 	SERVO_I2C.begin();
-	SERVO_I2C.setPWMFreq(50);  //ÉèÖÃ¶æ»úÇı¶¯°åµÄ¹¤×÷ÆµÂÊ
+	SERVO_I2C.setPWMFreq(50);  //è®¾ç½®èˆµæœºé©±åŠ¨æ¿çš„å·¥ä½œé¢‘ç‡
 	servo_csh();
 	Serial.println("I2C reday");
 	delay(200);
 	digitalWrite(11, HIGH);
-	Timer1.initialize(1000);        //µ÷Æµ 1msµÄÆµÂÊ
-	Timer1.pwm(10, 5);               //Õ¼¿Õ±È5
+	Timer1.initialize(1000);        //è°ƒé¢‘ 1msçš„é¢‘ç‡
+	Timer1.pwm(10, 5);               //å ç©ºæ¯”5
 	Timer1.attachInterrupt(callback);   
 	Serial.println("stepper reday");
 	zhuanghuo();
@@ -86,10 +86,10 @@ void loop()
 
 void callback()
 {
-	digitalWrite(10, digitalRead(10) ^ 1);    //·´×ª
+	digitalWrite(10, digitalRead(10) ^ 1);    //åè½¬
 }
 
-//×°ÔÚ»õÎï
+//è£…åœ¨è´§ç‰©
 void zhuanghuo()
 {
 	Serial.println("zhuanhuo");
@@ -97,7 +97,7 @@ void zhuanghuo()
 	delay(1000);
 	SERVO_I2C.setPWM(0, 0, 307);
 }
-//ÆäËûÑÕÉ«³ö¿Ú
+//å…¶ä»–é¢œè‰²å‡ºå£
 void yanshe_chukou()
 {
 	Serial.println("qita yanse");
@@ -106,7 +106,7 @@ void yanshe_chukou()
 	SERVO_I2C.setPWM(2, 0, 307);	
 }
 
-//´ó»õÎï³ö¿Ú  µÚ¶ş¸ö²à³ö¿Ú
+//å¤§è´§ç‰©å‡ºå£  ç¬¬äºŒä¸ªä¾§å‡ºå£
 void xiao_chukou()
 {
 	Serial.println("da chukou");
@@ -115,7 +115,7 @@ void xiao_chukou()
 	SERVO_I2C.setPWM(4, 0, 307);
 }
 
-//Ğ¡»õÎï³ö¿Ú  Î²¶Ë
+//å°è´§ç‰©å‡ºå£  å°¾ç«¯
 void da_chukou()
 {
 	Serial.println("xiao chukou");
@@ -123,7 +123,7 @@ void da_chukou()
 	delay(2000);
 	SERVO_I2C.setPWM(5, 0,307);
 }
-//Ìß³ö´ó»õÎï
+//è¸¢å‡ºå¤§è´§ç‰©
 void  tichu()
 {
 	SERVO_I2C.setPWM(3, 0, 400);
@@ -131,7 +131,7 @@ void  tichu()
 	SERVO_I2C.setPWM(3, 0, 204);
 }
 
-//¶æ»ú³õÊ¼»¯Î»ÖÃ
+//èˆµæœºåˆå§‹åŒ–ä½ç½®
 void servo_csh()
 {
 	SERVO_I2C.setPWM(0, 0, 307);
@@ -154,7 +154,7 @@ void servo_csh()
 	delay(200);
 }
 
-//¶æ»ú½ÃÕı
+//èˆµæœºçŸ«æ­£
 void cs()
 {
 	SERVO_I2C.setPWM(0, 0, 307);
@@ -179,7 +179,7 @@ void cs()
 }
 
 
-//ÅĞ¶Ï»õÎï´óĞ¡
+//åˆ¤æ–­è´§ç‰©å¤§å°
 void panduan()
 {
 	if (digitalRead(jiejing_panduan_qian)==LOW && digitalRead(jiejing_panduan_hou)== LOW)
@@ -198,7 +198,7 @@ void panduan()
 	}
 }
 
-//ÑÕÉ«Ê¶±ğ
+//é¢œè‰²è¯†åˆ«
 int yanshe_shibie()
 {
 	int a;
@@ -223,7 +223,7 @@ int yanshe_shibie()
 	return a;
 }
 
-//Ìß³öÑÕÉ«
+//è¸¢å‡ºé¢œè‰²
 void yanshe_tichu()
 {
 	Serial.println("tichu yanse");
@@ -232,7 +232,7 @@ void yanshe_tichu()
 	SERVO_I2C.setPWM(1, 0, 307);
 }
      
-//¶ÁÈ¡ËÄÖÖÑÕÉ«
+//è¯»å–å››ç§é¢œè‰²
 long readRed()
 {
 	return (readColor(LOW, LOW));
